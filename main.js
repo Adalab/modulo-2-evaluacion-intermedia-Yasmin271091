@@ -59,12 +59,12 @@ function comparation(userPlayer, getComputer) {
   } else if (userPlayer === "tijera" && getComputer === "papel") {
     textResult.innerHTML = "¡Has ganado!";
     playerPoints++;
-  } else if (userPlayer === "papel" && getComputer === "piedra") {
-    textResult.innerHTML = "¡Has perdido!";
-    computerPoints++;
+  } else if(userPlayer === getComputer]{
+    textResult.innerHTML = "¡Empate!";
+    
   } else {
-    textResult.innerHTML = "Empate!";
-  }
+    textResult.innerHTML = "has perdido!";
+  }computerPoints++;
 }
 
 function Points() {
