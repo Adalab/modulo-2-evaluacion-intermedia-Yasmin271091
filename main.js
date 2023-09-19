@@ -31,39 +31,53 @@ function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 //al escoger un resultado (piedra, papel o tijera) lo convierte en nuemero(puntos)
-function userPlayer(){
-    return parseInt(result.value);
+function userPlayer() {
+  return parseInt(select.value);
 }
 //condicional que compara numero random con el valor seleccionado
 function getComputer() {
   const randomNumber = getRandomNumber(9);
   let result = "";
   if (randomNumber >= 3) {
-    result = piedra;
+    result = "piedra";
   } else if (randomNumber <= 7) {
-    result = papel;
+    result = "papel";
   } else {
-    result = tijera;
+    result = "tijera";
   }
   return result;
 }
 
-function handleClick(event) {
-  event.preventDefault();
-}
 //compara si la eleccion del usuario con el ordenador es mayor, menos o igual, e indica un mensaje diferente que refleja en HTML
-function comparation (userPlayer, getComputer){
-    if(userPlayer > getComputer){
-        textResult.innerHTML = "¡Has ganado!";
-        playerPoints++;
-    }else if (userPlayer < getComputer){
-        textResult.innerHTML = "¡Has perdido!";
-        computerPoints++;
-    }else{
-        textResult.innerHTML = "Empate.";
-    }
+function comparation(userPlayer, getComputer) {
+  if (userPlayer === "papel" && getComputer === "roca") {
+    textResult.innerHTML = "¡Has ganado!";
+    playerPoints++;
+  } else if (userPlayer === "piedra" && getComputer === "tijera") {
+    textResult.innerHTML = "¡Has ganado!";
+    playerPoints++;
+  } else if (userPlayer === "tijera" && getComputer === "papel") {
+    textResult.innerHTML = "¡Has ganado!";
+    playerPoints++;
+  } else if (userPlayer === "papel" && getComputer === "piedra") {
+    textResult.innerHTML = "¡Has perdido!";
+    computerPoints++;
+  } else {
+    textResult.innerHTML = "Empate!";
+  }
 }
 
+function Points() {
+  playerOne.innerHTML = playerPoints;
+  playerComputer.innerHTML = computerPoints;
+}
+
+function handleClick(event) {
+  event.preventDefault();
+  const player = userPlayer();
+  const computer = getComputer();
+  comparation(player, computer);
+}
 //EVENTOS
 
 btn.addEventListener("click", handleClick);
