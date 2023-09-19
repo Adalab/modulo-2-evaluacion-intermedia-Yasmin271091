@@ -34,7 +34,7 @@ function getRandomNumber(max) {
 function userPlayer(){
     return parseInt(result.value);
 }
-
+//condicional que compara numero random con el valor seleccionado
 function getComputer() {
   const randomNumber = getRandomNumber(9);
   let result = "";
@@ -50,6 +50,18 @@ function getComputer() {
 
 function handleClick(event) {
   event.preventDefault();
+}
+//compara si la eleccion del usuario con el ordenador es mayor, menos o igual, e indica un mensaje diferente que refleja en HTML
+function comparation (userPlayer, getComputer){
+    if(userPlayer > getComputer){
+        textResult.innerHTML = "¡Has ganado!";
+        playerPoints++;
+    }else if (userPlayer < getComputer){
+        textResult.innerHTML = "¡Has perdido!";
+        computerPoints++;
+    }else{
+        textResult.innerHTML = "Empate.";
+    }
 }
 
 //EVENTOS
